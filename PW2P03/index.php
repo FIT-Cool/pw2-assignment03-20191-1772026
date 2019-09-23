@@ -44,6 +44,12 @@ include_once 'db_function/genre_func.php';
             case 'pt';
                 include_once 'view/Patient.php';
                 break;
+            case 'iu';
+                include_once 'view/InsuranceUpdate.php';
+                break;
+            case 'pu';
+                include_once 'view/PatientUpdate.php';
+                break;
             default;
                 include_once 'view/Home.php';
         }

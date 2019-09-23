@@ -73,3 +73,44 @@ function addPatient($Medical_Record,$Citizen_ID,$Name,$Address,$Birth_Place,$Bir
     }
     $link=null;
 }
+
+function deleteGenre($id)
+{
+    $database = "mysql";
+    $databaseName = "pw22091";
+    $link = new PDO("$database:host=localhost;dbname=$databaseName", "root", "");
+    $link->setAttribute(PDO::ATTR_AUTOCOMMIT, false);
+    $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $link->beginTransaction();
+
+    $query = 'DELETE FROM genre WHERE id = ?';
+    $statement = $link->prepare($query);
+    $statement->bindParam(1, $id, PDO::PARAM_INT);
+    if ($statement->execute()) {
+        $link->commit();
+    } else {
+        $link->rollBack();
+    }
+    $link = null;
+}
+
+function updateGenre($id,$name)
+{
+    $database = "mysql";
+    $databaseName = "pw22091";
+    $link = new PDO("$database:host=localhost;dbname=$databaseName", "root", "");
+    $link->setAttribute(PDO::ATTR_AUTOCOMMIT, false);
+    $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $link->beginTransaction();
+
+    $query = 'UPDATE genre SET name= ? WHERE id=?';
+    $statement = $link->prepare($query);
+    $statement->bindParam(1, $name, PDO::PARAM_STR);
+    $statement->bindParam(2, $id, PDO::PARAM_INT);
+    if ($statement->execute()) {
+        $link->commit();
+    } else {
+        $link->rollBack();
+    }
+    $link = null;
+}
