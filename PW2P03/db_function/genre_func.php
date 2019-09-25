@@ -189,7 +189,7 @@ function getPatient($id){
 
     $query= "SELECT p.*,i.* FROM patient p JOIN insurance i on p.insurance_id = i.id  WHERE med_record_number=? LIMIT 1";
     $statement = $link->prepare($query);
-    $statement->bindParam(1, $id, PDO::PARAM_INT);
+    $statement->bindParam(1, $id, PDO::PARAM_STR);
     $statement->execute();
     $result=$statement->fetch();
     $link = null;
