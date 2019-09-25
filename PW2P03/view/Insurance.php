@@ -38,7 +38,7 @@ if (isset($submitted)) {
         echo '<tr>';
         echo '<td>' . $insurance['id'] . '</td>';
         echo '<td>' . $insurance['name_class'] . '</td>';
-        echo '<td><button onclick="deleteInsurance(' . $insurance['id'] . ')">Delete</button><button onclick="updateInsurance(' . $insurance['id'] . ')">Edit</button></td>';
+        echo '<td><button onclick="deleteInsurance(\'' . $insurance['id'] . '\')">Delete</button><button onclick="updateInsurance(\'' . $insurance['id'] . '\')">Edit</button></td>';
         echo '<tr>';
     }
     ?>

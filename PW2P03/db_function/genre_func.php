@@ -144,7 +144,7 @@ function deletePatient($id)
 
     $query = 'DELETE FROM patient WHERE med_record_number = ?';
     $statement = $link->prepare($query);
-    $statement->bindParam(1, $id, PDO::PARAM_INT);
+    $statement->bindParam(1, $id, PDO::PARAM_STR);
     if ($statement->execute()) {
         $link->commit();
     } else {

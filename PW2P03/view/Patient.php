@@ -79,6 +79,7 @@ if (isset($submitted)) {
         <?php
         $patients = getAllPatient();
         foreach ($patients as $patient) {
+            $isidelete=$patient['med_record_number'];
             echo '<tr>';
             echo '<td>' . $patient['med_record_number'] . '</td>';
             echo '<td>' . $patient['citizen_id_number'] . '</td>';
@@ -88,8 +89,9 @@ if (isset($submitted)) {
             echo '<td>' .
                 DateTime::createFromFormat('Y-m-d', $patient['birth_date'])->format('d M Y')
                 . '</td>';
+
             echo '<td>' . $patient['name_class'] . '</td>';
-            echo '<td><button onclick="deletePatient(' . $patient['med_record_number'] . ')">Delete</button><button onclick="updatePatient(' . $patient['med_record_number'] . ')">Edit</button></td>';
+            echo '<td><button onclick="deletePatient(\''.$patient['med_record_number'].'\')">Delete</button><button onclick="updatePatient(\'' . $patient['med_record_number'] .'\')">Edit</button></td>';
             echo '</tr>';
         }
         ?>
