@@ -1,7 +1,15 @@
 <?php
-$submitted =filter_input(INPUT_POST,'btnSubmit');
-if(isset($submitted)){
-    $name=filter_input(INPUT_POST,'txtName');
+//=========================== DELETE==================
+$deleteComand = filter_input(INPUT_GET, 'delcom');
+if (isset($deleteComand) && $deleteComand == 1) {
+    $id = filter_input(INPUT_GET, 'id');
+    deleteInsurance($id);
+}
+
+//=========================== INSERT ======================
+$submitted = filter_input(INPUT_POST, 'btnSubmit');
+if (isset($submitted)) {
+    $name = filter_input(INPUT_POST, 'txtName');
     addInsurance($name);
 }
 ?>
@@ -20,15 +28,18 @@ if(isset($submitted)){
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     <?php
-    $genres = getAllInsurance();
-    foreach ($genres as $genre) {
+    $insurances = getAllInsurance();
+    foreach ($insurances as $insurance) {
         echo '<tr>';
-        echo '<td>' . $genre['id'] . '</td>';
-        echo '<td>' . $genre['name_class'] . '</td>';
+        echo '<td>' . $insurance['id'] . '</td>';
+        echo '<td>' . $insurance['name_class'] . '</td>';
+        echo '<td><button onclick="deleteInsurance(' . $insurance['id'] . ')">Delete</button><button onclick="updateInsurance(' . $insurance['id'] . ')">Edit</button></td>';
+        echo '<tr>';
     }
     ?>
     </tbody>

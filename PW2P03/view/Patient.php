@@ -1,4 +1,12 @@
 <?php
+//=========================== DELETE==================
+$deleteComand=filter_input(INPUT_GET,'delcom');
+if (isset($deleteComand)&& $deleteComand==1){
+    $id=filter_input(INPUT_GET,'id');
+    deletePatient($id);
+}
+
+//=========================== INSERT ======================
 $submitted = filter_input(INPUT_POST, 'btnSubmit');
 if (isset($submitted)) {
     $Medical_Record = filter_input(INPUT_POST, 'txtMedical_Record');
@@ -64,6 +72,7 @@ if (isset($submitted)) {
         <th>Birth Place</th>
         <th>Birth Date</th>
         <th>Insurance Name</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -80,6 +89,8 @@ if (isset($submitted)) {
                 DateTime::createFromFormat('Y-m-d', $patient['birth_date'])->format('d M Y')
                 . '</td>';
             echo '<td>' . $patient['name_class'] . '</td>';
+            echo '<td><button onclick="deletePatient(' . $patient['med_record_number'] . ')">Delete</button><button onclick="updatePatient(' . $patient['med_record_number'] . ')">Edit</button></td>';
+            echo '</tr>';
         }
         ?>
     </tbody>
