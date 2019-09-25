@@ -17,6 +17,7 @@ if (isset($submitted)) {
     $Birth_Date = filter_input(INPUT_POST, 'txtBirth_Date');
     $Name_Class = filter_input(INPUT_POST, 'Name_Class');
     addPatient($Medical_Record,$Citizen_ID,$Name,$Address,$Birth_Place,$Birth_Date,$Name_Class);
+
 }
 ?>
 <form method="post">
@@ -91,7 +92,7 @@ if (isset($submitted)) {
                 . '</td>';
 
             echo '<td>' . $patient['name_class'] . '</td>';
-            echo '<td><button onclick="deletePatient(\''.$patient['med_record_number'].'\')">Delete</button><button onclick="updatePatient(\'' . $patient['med_record_number'] .'\')">Edit</button></td>';
+            echo '<td><button onclick="deletePatient(\''.$patient['med_record_number'].'\')">Delete</button><button onclick="updatePatient(\''.$patient['med_record_number'].'\')">Edit</button></td>';
             echo '</tr>';
         }
         ?>

@@ -8,11 +8,20 @@ if (isset($id)){
 //Block below for insert
 $submitted = filter_input(INPUT_POST, 'btnSubmit');
 if (isset($submitted)) {
-    header("Location: index.php?menu=in");
-    $name = filter_input(INPUT_POST, 'txtName');
-    updateInsurance($id,$name);
+    header("Location: index.php?menu=pt");
+
+    $Medical_Record = filter_input(INPUT_POST, 'txtMedical_Record');
+    $Citizen_ID = filter_input(INPUT_POST, 'txtCitizen_ID');
+    $Name = filter_input(INPUT_POST, 'txtName');
+    $Address = filter_input(INPUT_POST, 'txtAddress');
+    $Birth_Place = filter_input(INPUT_POST, 'txtBirth_Place');
+    $Birth_Date = filter_input(INPUT_POST, 'txtBirth_Date');
+    $id = filter_input(INPUT_POST, 'Name_Class');
+//    updatePatient($id,$Medical_Record,$Citizen_ID,$Name,$Address,$Birth_Place,$Birth_Date,$Name_Class);
+    updatePatient($id,$Medical_Record,$Citizen_ID,$Name,$Address,$Birth_Place,$Birth_Date);
 }
 ?>
+
 <form method="post">
     <fieldset>
         <legend>Update Patient</legend>
