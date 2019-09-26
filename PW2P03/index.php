@@ -1,5 +1,6 @@
 <?php
-include_once 'db_function/genre_func.php';
+include_once 'db_function/patient_func.php';
+include_once 'db_function/insurance_func.php';
 ?>
 <!doctype html>
 <html lang="en">
